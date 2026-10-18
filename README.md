@@ -1,0 +1,66 @@
+# Der rote Faden · Themenwerkstatt
+
+Ein interaktives deutschsprachiges Themenfindungstool für Fach- und Maturaarbeiten, entwickelt aus dem bereitgestellten Dossier **Der rote Faden I** und der Präsentation **Praes ROTER FADEN1**.
+
+## Online nutzen
+
+[Themenwerkstatt öffnen](https://patrickfischerksa.github.io/themenfindung-roter-faden/)
+
+## Starten
+
+Keine Installation von Paketen, kein API-Schlüssel und kein Build nötig.
+
+```sh
+python3 -m http.server 4173
+```
+
+Danach http://localhost:4173 öffnen. Alternativ `npm start`. Die Dateien benötigen einen HTTP-Server, da ES-Module beim direkten Öffnen über `file://` eingeschränkt sind.
+
+## Funktionen
+
+1. Ideen sammeln: Brainstorming, verzweigte Assoziationen, Mindmap und optionaler 7-Minuten-Timer.
+2. Thema eingrenzen: Aspekt, Zielgruppe, Ort, Zeit, Korpus, Perspektive und bewusste Ausschlüsse; live aktualisierte Themenpyramide.
+3. Fragestellung: sechs Erkenntnisinteressen, bearbeitbare Fragegerüste und vorläufige Hypothese.
+4. Methodenkarussell: 15 Zugänge, Mehrfachauswahl, Hinweise zu Auswertung und Grenzen, frei einstellbare Aufwände.
+5. Machbarkeit: Wochen, Stunden, Puffer, Umfang, Grundaufwand, Stichprobe, Budget, Ressourcen; sieben individuell gewichtete Bewertungskriterien; bis zu acht Varianten.
+6. Planung: vier verschiebbare Phasen nach dem Dossier, Abgabe, Verpflichtungen, Schulvorgaben, Betreuung, priorisierte Fragen, Feedback und Arbeitsjournal.
+7. Konzept: sechs Fragen des Themen-Tests, Titel, Gliederung, Markdown-Export und Druckansicht für PDF.
+
+Alle Eingaben bleiben veränderbar. Ein Wechsel der Methode überschreibt nicht die eigene Forschungsfrage. Varianten enthalten ihren vollständigen Planungsstand und ihre Gewichtungen. Beim Laden einer Variante wird der aktuelle Entwurf an ihrer Stelle gesichert.
+
+## Speichern und Datenschutz
+
+Automatische Speicherung im `localStorage` des aktuellen Browsers. **Projekt sichern** exportiert JSON für Sicherungen, Gerätewechsel und Wiederaufnahme über **Öffnen**. Browserdaten können gelöscht werden; daher regelmässig exportieren. Protokoll, Hostname und Port bestimmen den lokalen Speicherbereich. Keine Serverdatenbank, keine Telemetrie, keine externen Schriften, keine KI-Anfragen. JSON-Dateien können persönliche Notizen enthalten und gehören nicht ins öffentliche Repository.
+
+## GitHub Pages
+
+1. Den Inhalt dieses Ordners als eigenes Repository hochladen (Startdatei `index.html` im Repository-Wurzelverzeichnis).
+2. Standardbranch `main` verwenden.
+3. Unter **Settings → Pages → Build and deployment → Source** die Option **GitHub Actions** wählen.
+4. Nach Push oder manuellem Start veröffentlicht `.github/workflows/pages.yml` die Website. Der Workflow führt zuvor Syntaxprüfung und Tests aus.
+
+Relative Pfade unterstützen auch Projektseiten unter `https://BENUTZER.github.io/REPOSITORY/`. Die Veröffentlichung erfolgt über dieses Repository und den enthaltenen GitHub-Actions-Workflow.
+
+## Prüfen und weiterentwickeln
+
+Node.js 20 oder neuer:
+
+```sh
+npm run check
+npm test
+```
+
+- `index.html`: Grundstruktur und Dialoge
+- `style.css`: responsive Gestaltung und Druckansicht
+- `app.js`: Eingaben, Speicherung, Mindmap, Varianten, Exporte
+- `engine.js`: Methoden, Zustandsmodell, Berechnungen, Konzepttext
+- `tests/engine.test.js`: Berechnungs- und Importtests
+- `docs/materialgrundlage.md`: Zuordnung zu den Materialien und ergänzte Heuristiken
+
+Zeitberechnung: `Wochen × Stunden/Woche × (1 − Puffer/100)`. Aufwand: Grundaufwand plus individuell geschätzte Stunden jeder gewählten Methode. Die Phasengewichte teilen die nutzbare Zeit auf. Der Seitenumfang ist ein Planungsziel; er erzeugt keine automatische Aufwandsschätzung. Die Bewertung ist ein gewichteter Mittelwert der eigenen 0–5-Wertungen, umgerechnet auf 0–100. Bei ausschliesslich null gesetzten Gewichten wird kein Score angezeigt. Sie ist keine schulische Note und keine automatische Freigabe eines Themas.
+
+Keine externen Laufzeitabhängigkeiten. Lehrpersonen können Methoden und Hinweise in `engine.js` anpassen. Lokale Browserdaten sind benutzerbezogen; diese Version enthält keine Klassenverwaltung und kein gemeinsames Bearbeiten.
+
+## Materialien und Rechte
+
+Original-PDF und Original-Präsentation sind nicht enthalten. Ihre Inhalte wurden als Arbeitsstruktur ausgewertet; fremde Zitate, Illustrationen und ausführliche Beispieltexte werden nicht weiterveröffentlicht. Die historische Erklärung über zwei getrennte Denkweisen der Hirnhälften wurde nicht als wissenschaftliche Grundlage übernommen. Fachliche und schulische Vorgaben sind mit der Betreuung zu klären. Rechte an den Ausgangsmaterialien bleiben bei den jeweiligen Rechteinhabern.
