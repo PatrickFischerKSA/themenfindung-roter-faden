@@ -1,3 +1,4 @@
+import {normalizeHandoff} from './spurwechsel.js';
 import {normalizeVolcano,volcanoExport} from './volcano.js';
 import {normalizeSynthesis,synthesisExport} from './synthesis.js';
 import {thinkingExport} from './thinking.js';
@@ -24,7 +25,7 @@ export const methods = [
 export const criteria = [
  ['interest','Eigenes Interesse'],['relevance','Fachliche Relevanz'],['focus','Klare Eingrenzung'],['sources','Quellenlage'],['access','Zugang zum Untersuchungsfeld'],['skills','Methodische Kenntnisse'],['originality','Eigener Beitrag']
 ].map(([id,label])=>({id,label}));
-export function freshState(){return {version:1,step:0,volcano:normalizeVolcano(),relevance:{debate:'',open:'',why:'',evidence:'',contribution:''},synthesis:normalizeSynthesis(),view:{mode:'map',rescueNeed:'empty',rescueStarted:false,labIndex:0,labLevel:1,labStage:0,labSource:'root',fitted:false,panel:0,methodIndex:0,inspirationIndex:0,selected:'root',technique:'cluster',prompt:0,zoom:1,panX:0,panY:0},mapPositions:{},creativeNotes:{},discoveryFocus:'dreams',discovery:Object.fromEntries(discoveryPaths.map(p=>[p.id,''])),discoveryDepth:Object.fromEntries(discoveryPaths.map(p=>[p.id,''])),coachAnswers:{},coachQuestions:{},creative:{format:'text',role:'vermittlung',customName:'',audience:'',goal:'',rationale:'',units:1,length:10,hours:12,pilot:'',quality:'',testing:'',companion:'',rights:'',accessibility:''},topic:'',subject:'',motivation:'',hopes:'',worries:'',ideas:[],edges:[],scope:{aspect:'',person:'',group:'',institution:'',place:'',period:'',corpus:'',perspective:'',exclude:''},scopeOrder:['aspect','person','group','institution','corpus','place','period'],intent:'verstehen',question:'',hypothesis:'',methodIds:['literatur'],methodHours:Object.fromEntries(methods.map(m=>[m.id,m.hours])),feedback:'',checkpointQuestions:'',commitments:'',resources:{people:false,sources:false,equipment:false},weeks:12,hoursPerWeek:4,buffer:20,pages:20,workHours:35,budget:0,cost:0,sample:10,deadline:'',ratings:Object.fromEntries(criteria.map(c=>[c.id,3])),weights:Object.fromEntries(criteria.map(c=>[c.id,1])),test:['','','','','',''],outline:'1. Einleitung und Fragestellung\n2. Grundlagen und Forschungsstand\n3. Methode und Material\n4. Untersuchung und Ergebnisse\n5. Diskussion und Grenzen\n6. Fazit',supervision:'',rules:'',title:'',notes:'',journal:[],candidates:[],milestones:[12.5,37.5,25,25]};}
+export function freshState(){return {version:1,step:0,handoff:normalizeHandoff(),drafts:{},volcano:normalizeVolcano(),relevance:{debate:'',open:'',why:'',evidence:'',contribution:''},synthesis:normalizeSynthesis(),view:{mode:'map',previousMode:'',rescueNeed:'empty',rescueStarted:false,labIndex:0,labLevel:1,labStage:0,labSource:'root',fitted:false,panel:0,methodIndex:0,inspirationIndex:0,selected:'root',technique:'cluster',prompt:0,zoom:1,panX:0,panY:0},mapPositions:{},creativeNotes:{},discoveryFocus:'dreams',discovery:Object.fromEntries(discoveryPaths.map(p=>[p.id,''])),discoveryDepth:Object.fromEntries(discoveryPaths.map(p=>[p.id,''])),coachAnswers:{},coachQuestions:{},creative:{format:'text',role:'vermittlung',customName:'',audience:'',goal:'',rationale:'',units:1,length:10,hours:12,pilot:'',quality:'',testing:'',companion:'',rights:'',accessibility:''},topic:'',subject:'',motivation:'',hopes:'',worries:'',ideas:[],edges:[],scope:{aspect:'',person:'',group:'',institution:'',place:'',period:'',corpus:'',perspective:'',exclude:''},scopeOrder:['aspect','person','group','institution','corpus','place','period'],intent:'verstehen',question:'',hypothesis:'',methodIds:['literatur'],methodHours:Object.fromEntries(methods.map(m=>[m.id,m.hours])),feedback:'',checkpointQuestions:'',commitments:'',resources:{people:false,sources:false,equipment:false},weeks:12,hoursPerWeek:4,buffer:20,pages:20,workHours:35,budget:0,cost:0,sample:10,deadline:'',ratings:Object.fromEntries(criteria.map(c=>[c.id,3])),weights:Object.fromEntries(criteria.map(c=>[c.id,1])),test:['','','','','',''],outline:'1. Einleitung und Fragestellung\n2. Grundlagen und Forschungsstand\n3. Methode und Material\n4. Untersuchung und Ergebnisse\n5. Diskussion und Grenzen\n6. Fazit',supervision:'',rules:'',title:'',notes:'',journal:[],candidates:[],milestones:[12.5,37.5,25,25]};}
 export function suggestQuestion(s){
  const a=s.scope; const core=[a.aspect||s.topic,a.person&&`am Beispiel von ${a.person}`,a.group&&`bei ${a.group}`,a.institution&&`im Kontext von ${a.institution}`,a.place&&`in ${a.place}`,a.period&&`im Zeitraum ${a.period}`].filter(Boolean).join(' ');
  if(!s.topic.trim()&&!a.aspect.trim())return '';
@@ -61,6 +62,8 @@ export function normalize(raw){
  const d=freshState();
  d.synthesis=normalizeSynthesis(raw.synthesis);
  d.volcano=normalizeVolcano(raw.volcano);
+ d.handoff=normalizeHandoff(raw.handoff);
+ if(raw.drafts&&typeof raw.drafts==='object')for(const [key,value] of Object.entries(raw.drafts).slice(0,25))if(/^(map-new|new-idea|journal-text|idea-parent|combine-node|seed-[a-z]+)$/.test(key)&&typeof value==='string')d.drafts[key]=value.slice(0,30000);
  for(const k of Object.keys(d)){
   if(typeof d[k]==='string'&&typeof raw[k]==='string')d[k]=raw[k].slice(0,30000);
   if(typeof d[k]==='number'&&Number.isFinite(raw[k]))d[k]=raw[k];
@@ -71,6 +74,7 @@ export function normalize(raw){
  for(const m of methods)d.methodHours[m.id]=Math.max(0,Math.min(2000,Number(d.methodHours[m.id])||0));
  d.step=Math.floor(d.step);
  if(!['map','linear','disrupt','volcano'].includes(d.view.mode))d.view.mode='map';
+ if(!['map','linear','disrupt','volcano'].includes(d.view.previousMode))d.view.previousMode='';
  for(const [key,max] of [['labIndex',11],['labLevel',2],['labStage',2]])d.view[key]=Math.max(0,Math.min(max,Math.floor(Number(d.view[key])||0)));
  if(!['empty','overload','certain','flat','pressure','resources'].includes(d.view.rescueNeed))d.view.rescueNeed='empty';
  d.view.labSource=d.view.labSource.slice(0,200);
