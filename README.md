@@ -16,7 +16,23 @@ python3 -m http.server 4173
 
 Danach http://localhost:4173 öffnen. Alternativ `npm start`. Die Dateien benötigen einen HTTP-Server, da ES-Module beim direkten Öffnen über `file://` eingeschränkt sind.
 
-## Neu: gezieltes Feedback und kreative Darstellungsformen
+## Zwei ergänzende Denkmodi
+
+**Freier Denkraum (Startansicht):** eine interaktive Mindmap mit verschiebbaren Knoten, beliebig tiefen Ästen, Querbeziehungen, Zoom, Verschieben der Fläche, Einpassen und Rückgängig für strukturelle Änderungen. Gedanken lassen sich direkt bearbeiten, neu verbinden und als Fokus übernehmen. Persönliche Antworten, Fokus, Material und Forschungsfrage erscheinen in derselben Karte.
+
+**Geführter Weg:** sieben frei anwählbare Schritte mit jeweils kleinen Arbeitsabschnitten. Es ist immer nur ein Abschnitt sichtbar. Auch Methoden und kreative Formate werden einzeln erkundet. Ein Abschnitt kann über die Auswahl oder mit Zurück/Weiter gewechselt werden. Coach und Projektübersicht liegen in Dialogen auf Abruf statt über den Eingaben.
+
+Beide Ansichten verwenden denselben Projektzustand. Im Denkraum erzeugte Ideen sind sofort im geführten Weg verfügbar; dort erarbeitete Eingrenzungen erscheinen wieder als Knoten. Umschalten erzeugt keine Kopie. Bisherige Projekte werden automatisch ergänzt.
+
+### Kreativtechniken
+
+Freies Clustern, Perspektivwechsel, Kopfstand, Zufallsimpulse, Ideen verbinden, SCAMPER und freies Schreiben sind direkt in der Mindmap nutzbar. Notizen bleiben pro Impuls erhalten; ein Einfall oder eine Textmarkierung kann als neuer Knoten am ausgewählten Gedanken angefügt werden. Bei der Ideenkombination entsteht zusätzlich eine Querbeziehung.
+
+Bedienung: Knoten anklicken oder per Tab/Enter auswählen, ziehen oder mit Pfeiltasten bewegen. Hintergrund ziehen zum Verschieben. Plus/Minus oder Mausrad zum Zoomen, «Alles einpassen» für den Überblick. Auf schmalen Bildschirmen kann ein Gedanke auch über eine Auswahl angesteuert werden. Positionen, Verbindungen, Kreativnotizen und zuletzt gewählter Modus werden mit dem Projekt gespeichert. «Rückgängig» betrifft strukturelle Mindmap-Änderungen der aktuellen Sitzung.
+
+Die Oberfläche bleibt innerhalb des Browserfensters. Längere Notizen und zusätzliche Verknüpfungsdetails können innerhalb ihres Arbeitsbereichs gescrollt werden. Die ehemalige lange Formularseite entfällt.
+
+## Gezieltes Feedback und kreative Darstellungsformen
 
 Der **Werkstatt-Coach** reagiert auf den aktuellen Entwurf: Er benennt tragfähige Ansätze, stellt gezielte Rückfragen und gibt konkrete nächste Schritte zu Eingrenzung, Vergleich, Kausalität, Quellenzugang, Methoden, Zeit und Produktentwicklung. Antworten bleiben im Projekt erhalten und werden im Konzept exportiert. Das Feedback arbeitet mit nachvollziehbaren Regeln, ohne externe KI-Anbindung oder fachliche Faktenprüfung.
 
@@ -68,6 +84,8 @@ npm test
 - `engine.js`: Methoden, Zustandsmodell, Berechnungen, Konzepttext
 - `formats.js`: Formate, produktbezogene Hinweise und Konzeptbaustein
 - `coaching.js`: regelbasierte Rückfragen, Feedback und kreative Themenimpulse
+- `thinking.js`: gemeinsames Graphmodell, Layout, Verbindungen und Kreativtechniken
+- `studio.js` / `studio.css`: interaktive Mindmap und kompakte Oberfläche
 - `tests/engine.test.js`: Berechnungs- und Importtests
 - `docs/materialgrundlage.md`: Zuordnung zu den Materialien und ergänzte Heuristiken
 

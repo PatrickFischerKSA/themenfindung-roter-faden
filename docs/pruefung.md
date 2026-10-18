@@ -24,3 +24,13 @@ Grenzen: Der erzeugte Konzepttext und die Importlogik sind automatisiert geprüf
 - 21 Tests erfolgreich: fünf zusätzliche Tests decken persönliche Zugänge, materialbezogene Anschlussfragen, Themenkeime, Speicherung/Import alter Projekte und Varianten sowie Konzeptinhalt ab.
 - Im Browser mit fiktiven Angaben geprüft: Traum direkt im Coach beantworten (erscheint auch in der Entdeckungsreise), zu Familienschätzen wechseln, Fotoalbum nennen, passende Bild-/Quellenfrage erhalten, Vertiefung schreiben, eigene kurze Spur als Themenfeld übernehmen; Thema und Antworten bleiben nach Neuladen erhalten.
 - Smartphone-Viewport mit 390 px: kein horizontaler Seitenüberlauf.
+
+## Denkmodi und kompakte Oberfläche
+
+- Automatische Tests prüfen die gemeinsame Darstellung von Thema, persönlichen Antworten, Eingrenzung und Forschungsfrage, tiefe Verzweigungen, Layout mit gespeicherten Positionen, Zyklenschutz, Querbeziehungen, Löschen mit Erhalt untergeordneter Gedanken, Import und Kreativtechniken.
+- Im Browser geprüft: Mindmap-Gedanken und Untergedanken anlegen, Fokus übernehmen, in den geführten Weg wechseln, dort Fokus ändern und den neuen Knoten in der Mindmap sehen; Perspektivwechsel notieren und als Knoten übernehmen.
+- Knoten per Ziehen verschoben, eine Querbeziehung angelegt und nach Neuladen wiedergefunden.
+- Geführte Formatplanung zeigt jeweils nur einen kleinen Arbeitsabschnitt.
+- Mobile Prüfung mit 390 × 844 px: Dokumenthöhe entspricht der Viewporthöhe, kein horizontaler Seitenüberlauf, genau ein geführter Arbeitsabschnitt sichtbar. Knotenauswahl auf kleinen Bildschirmen öffnet den gewählten Gedanken lesbar.
+
+Abschluss der Umstellung: 29 automatische Tests erfolgreich. Zusätzlich wurden der auf Abruf geöffnete Coach, die Ansicht auf 1440 × 960 px und die mobile Knotenauswahl geprüft. Der Browser meldete in der abgefragten Fehlerliste keine JavaScript-Fehler. Das automatische Layout hält Abstand zwischen Beschriftungen; absichtlich manuell platzierte Knoten bleiben an ihrer Position. Kreativnotizen, Gedanken und Querbeziehungen sind Teil des Konzeptexports.
