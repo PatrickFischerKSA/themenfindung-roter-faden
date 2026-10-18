@@ -96,7 +96,7 @@ studio=createStudio({getState:()=>state,save,changed:updateLive,replace:s=>{stat
 $('#project-json').onclick=()=>download('roter-faden-projekt.json',JSON.stringify(state,null,2),'application/json');$('#project-info').onclick=()=>{$('#project-dialog').close();$('#info').showModal();};$('#project-reset').onclick=()=>{$('#project-dialog').close();$('#reset').click();};
 $('#coach-dialog').addEventListener('close',()=>{if(state.view.mode==='map')studio.render();});
 const synthesisUI=createSynthesisUI({state:()=>state,save,methods,replace:s=>{state=normalize(s);studio?.clearHistory();},render,toast});$('#open-synthesis').onclick=()=>synthesisUI.open();
-disruption=createDisruption({state:()=>state,save,toast,clearHistory:()=>studio?.clearHistory(),synthesis:()=>synthesisUI.open()});
+disruption=createDisruption({state:()=>state,save,toast,mode:switchMode,clearHistory:()=>studio?.clearHistory(),synthesis:()=>synthesisUI.open()});
 $('#mode-disrupt').onclick=()=>switchMode('disrupt');
 $('#mode-map').onclick=()=>switchMode('map');$('#mode-linear').onclick=()=>switchMode('linear');
 $('#open-coach').onclick=()=>{coachCollapsed=false;renderCoach(evaluate(state));$('#coach-dialog').showModal();};$('#open-project').onclick=()=>$('#project-dialog').showModal();

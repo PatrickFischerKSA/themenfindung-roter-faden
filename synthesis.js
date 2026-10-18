@@ -7,7 +7,7 @@ export function synthesisSources(s){const sources=[];const seen=new Set();const 
  for(const idea of s.ideas)add('idea-'+idea.id,'Mindmap-Gedanke',idea.text,'idea','idea:'+idea.id);
  for(const [key,label] of [['corpus','Material'],['group','Zielgruppe'],['person','Personen'],['place','Ort'],['period','Zeitraum'],['perspective','Perspektive']])add('scope-'+key,label,s.scope[key],'scope',['corpus','group','place','period'].includes(key)?'scope:'+key:undefined);
  add('motivation','Persönliches Interesse',s.motivation,'project');add('question','Bisherige Forschungsfrage',s.question,'project','question');
- for(const [id,text] of Object.entries(s.creativeNotes))add('creative-'+id,'Kreativnotiz',text,'creative');
+ for(const [id,text] of Object.entries(s.creativeNotes)){if(/^(labcontext|rescuecheck)-/.test(id))continue;const label=id.startsWith('rescueplan-')?'Rescue Programm · Nächster Versuch':id.startsWith('harvest-')?'Rescue Programm · Geretteter Kern':id.startsWith('lab-')?'Rescue Programm · Gedankenexperiment':'Kreativnotiz';add('creative-'+id,label,text,'creative');}
  for(const [id,text] of Object.entries(s.coachAnswers))add('coach-'+id,'Antwort auf eine Coach-Frage',text,'coach');
  return sources.slice(0,100);
 }
