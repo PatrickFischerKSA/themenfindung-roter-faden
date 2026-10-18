@@ -11,6 +11,7 @@ export const techniques=[
 ];
 export function graphNodes(s){const nodes=[{id:'root',text:s.topic||'Was bewegt dich?',kind:'root',path:'topic',parent:null}];
  for(const [i,p] of discoveryPaths.entries())nodes.push({id:'discover:'+p.id,text:s.discovery[p.id]||p.name,kind:'discovery',path:'discovery.'+p.id,category:p.id,parent:'root',color:i,empty:!s.discovery[p.id].trim()});
+ for(const [key,label] of [['debate','Aktuelle Debatte'],['open','Offene Forschungsfrage'],['why','Warum heute relevant?']])if(s.relevance?.[key]?.trim()||key==='debate')nodes.push({id:'relevance:'+key,text:s.relevance?.[key]||'Welche Fragen sind heute besonders relevant?',label,kind:'relevance',path:'relevance.'+key,parent:'root',color:3,empty:!s.relevance?.[key]?.trim()});
  const scope=[['aspect','Fokus'],['corpus','Material'],['group','Zielgruppe'],['place','Ort'],['period','Zeit']];for(const [key,label] of scope)if(s.scope[key].trim())nodes.push({id:'scope:'+key,text:s.scope[key],label,kind:'scope',path:'scope.'+key,parent:'root',color:2});
  if(s.question.trim())nodes.push({id:'question',text:s.question,label:'Forschungsfrage',kind:'question',path:'question',parent:'root',color:0});
  const ids=new Set(s.ideas.map(i=>i.id));const known=new Set(nodes.map(n=>n.id));
