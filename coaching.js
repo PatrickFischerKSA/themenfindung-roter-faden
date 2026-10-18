@@ -1,3 +1,4 @@
+import {discoveryQuestion,discoveryPaths} from './discovery.js';
 import {chosenFormat,isCreative} from './formats.js';
 // Transparente Regeln statt freier KI-Antworten. Jede Rückfrage hat eine stabile ID.
 export function coach(s,e){
@@ -37,6 +38,9 @@ export function coach(s,e){
  }
  else if(s.intent==='entwickeln'||s.methodIds.includes('kreativ'))add('discover-format',3,'idee','Dein Vorhaben darf eine andere Form annehmen',`Zu «${focus}» ist eine gestalterische Arbeit denkbar.`,'Würden Klang, Bilder, Interaktion oder ein räumlicher Rundgang einen besonderen Zugang eröffnen?','Vergleiche Podcast, Video, digitale Anwendung, Spiel und künstlerisches Werk im Formatlabor.','creative.format');
  if(s.test.some(x=>x.trim())&&s.test.some(x=>!x.trim()))add('test-gaps',6,'frage','Im Konzept bleiben noch Lücken',`${s.test.filter(x=>x.trim()).length} von 6 Antworten im Themen-Test sind ausgefüllt.`,'Welche unbeantwortete Frage fällt dir gerade am schwersten – und welche Information fehlt dir dafür?','Gehe zum passenden Arbeitsschritt zurück und ergänze erst danach die Antwort.','test');
+ const explored=discoveryPaths.filter(p=>s.discovery?.[p.id]?.trim());
+ for(const p of explored){const d=discoveryQuestion(s,p.id);if(!s.discoveryDepth?.[p.id]?.trim())items.unshift({id:'personal-'+p.id,step:0,kind:'idee',title:p.name+': eine Spur vertiefen',feedback:`Du hast notiert: «${d.answer.slice(0,180)}${d.answer.length>180?' …':''}».`,question:d.follow,hint:p.methods,path:'discoveryDepth.'+p.id});}
+ if(!explored.length&&s.step===0){const p=discoveryQuestion(s,s.discoveryFocus);items.unshift({id:'personal-start-'+p.id,step:0,kind:'frage',title:'Dein Leben darf der Ausgangspunkt sein',feedback:'Ein Thema muss nicht mit einem Schulfach beginnen. Träume, Freizeit und kleine Alltagsrätsel können eine Spur legen.',question:p.question,hint:'Wähle im Bereich «Persönliche Entdeckungsreise» eine Frage, die dich anspricht. Du kannst jede Frage überspringen.',path:'discovery.'+p.id});}
  return items;
 }
 export function coachExport(s,e){const items=coach(s,e);const earlier=Object.entries(s.coachAnswers||{}).filter(([id,answer])=>answer.trim()&&!items.some(i=>i.id===id));return '## Werkstatt-Feedback und eigene Antworten\n'+items.map(i=>`### ${i.title}\n${i.feedback}\nRückfrage: ${i.question}\nHinweis: ${i.hint}\nMeine Antwort: ${s.coachAnswers?.[i.id]||'noch offen'}`).join('\n\n')+(earlier.length?'\n\n### Frühere Rückfragen und Antworten\n'+earlier.map(([id,answer])=>`${s.coachQuestions?.[id]||'Frühere Rückfrage'}\nMeine Antwort: ${answer}`).join('\n\n'):'')+'\n';}

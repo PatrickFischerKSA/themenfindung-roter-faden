@@ -39,3 +39,5 @@ Die Originale sind nicht Teil des GitHub-Pakets. Das Tool verwendet eigene Formu
 ## Erweiterung: Feedback und Formate
 
 Der regelbasierte Werkstatt-Coach und die ausgearbeitete Planung von Podcast, Video, digitalen Anwendungen, Ausstellung/Audiowalk, Spiel/Simulation und künstlerischen Werken erweitern die Materialien auf Wunsch des Nutzers. Die Quelle liefert den Grundgedanken der kreativen Arbeit mit wissenschaftlichem Begleittext; die konkreten Formatprofile, Pilotideen, Rückfragen und Qualitätskriterien sind neu entwickelte didaktische Hilfen. Sie belegen keine Eignung oder Originalität eines konkreten Themas. Die schulische Zulässigkeit der Darstellungsform muss weiterhin mit der Betreuung geklärt werden.
+
+Die persönliche Entdeckungsreise mit acht Zugängen und materialbezogenen Anschlussfragen wurde auf weiteren Nutzerwunsch ergänzt. Sie erweitert das freie Clustern um Träume, ausserschulische Interessen, Anliegen, familiäre Materialien und offene persönliche Fragen. Antworten sind freiwillig; das Tool leitet daraus keine biografischen Tatsachen oder psychologischen Bewertungen ab.

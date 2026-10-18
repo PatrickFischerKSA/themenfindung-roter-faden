@@ -25,7 +25,7 @@ jobs:
       - name: Prepare public files
         run: |
           mkdir -p _site/docs
-          cp index.html style.css app.js engine.js formats.js coaching.js favicon.svg _site/
+          cp index.html style.css app.js engine.js formats.js coaching.js discovery.js favicon.svg _site/
           cp docs/materialgrundlage.md _site/docs/
           touch _site/.nojekyll
       - uses: actions/configure-pages@v5

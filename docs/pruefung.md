@@ -18,3 +18,9 @@ Grenzen: Der erzeugte Konzepttext und die Importlogik sind automatisiert geprüf
 - Weitere Coach-Impulse erscheinen; der Bereich lässt sich einklappen. Die Konzeptvorschau enthält sowohl Formatplanung als auch die gespeicherte Antwort auf eine frühere Rückfrage.
 - Smartphone-Viewport mit 390 px: kein horizontaler Seitenüberlauf im Feedback- und Formatbereich.
 - Die Browser-Dateirunde bleibt wie oben beschrieben eine nicht vollständig automatisiert geprüfte Funktion; die Exportinhalte und JSON-Kompatibilität sind durch Tests abgedeckt.
+
+## Erweiterung persönliche Entdeckungsreise
+
+- 21 Tests erfolgreich: fünf zusätzliche Tests decken persönliche Zugänge, materialbezogene Anschlussfragen, Themenkeime, Speicherung/Import alter Projekte und Varianten sowie Konzeptinhalt ab.
+- Im Browser mit fiktiven Angaben geprüft: Traum direkt im Coach beantworten (erscheint auch in der Entdeckungsreise), zu Familienschätzen wechseln, Fotoalbum nennen, passende Bild-/Quellenfrage erhalten, Vertiefung schreiben, eigene kurze Spur als Themenfeld übernehmen; Thema und Antworten bleiben nach Neuladen erhalten.
+- Smartphone-Viewport mit 390 px: kein horizontaler Seitenüberlauf.

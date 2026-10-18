@@ -24,6 +24,10 @@ Das **Formatlabor** bietet wissenschaftlichen Text, Podcast/Hörstück, Video/Do
 
 Bisherige Projekte werden automatisch mit den neuen Feldern ergänzt. Gespeicherte Varianten enthalten auch Formatplanung und Coach-Antworten. Produktionsstunden zählen nur bei alternativen Darstellungsformen und zusätzlich zu Grund- und Methodenaufwand; dieselben Tätigkeiten sollten nicht doppelt geschätzt werden.
 
+## Persönliche Entdeckungsreise
+
+Acht freiwillige Zugänge erschliessen Themen aus dem eigenen Leben: Träume/Zukunft, Freizeitinteressen, Leidenschaften/Nischenthemen, Herzensanliegen, Familienschätze, offene Fragen, Begegnungen/Orte und eigene Fähigkeiten. Zu jeder Antwort lässt sich eine Vertiefung festhalten. Bei Fotoalben, Rezepten, Tagebüchern oder Handwerk passen sich die Rückfragen an das genannte Material an. Aus Antworten entstehen bearbeitbare Themenkeime. Sie lassen sich als Gedanke sammeln oder ausdrücklich als Themenfeld testen; ein bisheriges Themenfeld bleibt dabei als Gedanke erhalten. Die Antworten sind Teil der lokalen Projektdaten, der Varianten und des Konzeptexports.
+
 ## Funktionen
 
 1. Ideen sammeln: Brainstorming, verzweigte Assoziationen, Mindmap und optionaler 7-Minuten-Timer.
