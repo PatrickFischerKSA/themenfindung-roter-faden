@@ -5,7 +5,7 @@ export function synthesisSources(s){const sources=[];const seen=new Set();const 
  add('topic','Ausgangsthema',s.topic,'project','root');add('aspect','Bisheriger Fokus',s.scope.aspect,'scope','scope:aspect');
  for(const p of discoveryPaths){add('personal-'+p.id,p.name,s.discovery[p.id],'personal','discover:'+p.id);add('depth-'+p.id,p.name+' · Vertiefung',s.discoveryDepth[p.id],'personal');}
  for(const [key,label] of [['debate','Aktuelle Debatte'],['open','Offene Forschungsfrage'],['why','Heutige Relevanz']])add('relevance-'+key,label,s.relevance?.[key],'relevance','relevance:'+key);
- if(s.volcano?.resultTerm){add('volcano-term','Themenvulkan · Ausgangsbegriff',s.volcano.resultTerm,'project');add('volcano-answer','Themenvulkan · Eigener Schwerpunkt',s.volcano.resultAnswer,'project');}
+ if(s.volcano?.resultTerm){add('volcano-term','Themenvulkan · Ausgangsbegriff',s.volcano.resultTerm,'project');add('volcano-answer','Themenvulkan · Eigener Schwerpunkt',s.volcano.resultAnswer,'project');if(s.volcano.resultDocument)add('volcano-document','Dokumentauszug · '+s.volcano.resultDocument.name,s.volcano.resultDocument.excerpt,'project');}
  for(const idea of s.ideas)add('idea-'+idea.id,'Mindmap-Gedanke',idea.text,'idea','idea:'+idea.id);
  for(const [key,label] of [['corpus','Material'],['group','Zielgruppe'],['person','Personen'],['place','Ort'],['period','Zeitraum'],['perspective','Perspektive']])add('scope-'+key,label,s.scope[key],'scope',['corpus','group','place','period'].includes(key)?'scope:'+key:undefined);
  add('motivation','Persönliches Interesse',s.motivation,'project');add('question','Bisherige Forschungsfrage',s.question,'project','question');

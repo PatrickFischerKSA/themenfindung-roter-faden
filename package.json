@@ -1,9 +1,20 @@
 {
   "name": "themenfindung-roter-faden",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "private": true,
   "type": "module",
   "description": "Interaktive Werkstatt zur Themenfindung für Fach- und Maturaarbeiten",
-  "scripts": {"start": "python3 -m http.server 4173", "test": "node --test", "check": "node --check app.js && node --check engine.js && node --check formats.js && node --check coaching.js && node --check discovery.js && node --check thinking.js && node --check studio.js && node --check synthesis.js && node --check synthesis-ui.js && node --check disruption.js && node --check speech.js && node --check exports.js && node --check volcano.js"},
-  "engines": {"node": ">=20"}
+  "scripts": {
+    "start": "python3 -m http.server 4173",
+    "test": "node --test",
+    "check": "node --check app.js && node --check engine.js && node --check formats.js && node --check coaching.js && node --check discovery.js && node --check thinking.js && node --check studio.js && node --check synthesis.js && node --check synthesis-ui.js && node --check disruption.js && node --check speech.js && node --check exports.js && node --check volcano.js && node --check document-import.js",
+    "vendor": "node scripts/vendor.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "mammoth": "1.13.0",
+    "pdfjs-dist": "6.4.299"
+  }
 }
