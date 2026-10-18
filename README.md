@@ -16,6 +16,18 @@ python3 -m http.server 4173
 
 Danach http://localhost:4173 öffnen. Alternativ `npm start`. Die Dateien benötigen einen HTTP-Server, da ES-Module beim direkten Öffnen über `file://` eingeschränkt sind.
 
+## Synthese: Spuren aus beiden Modi verbinden
+
+Der Button **Synthese** ist aus beiden Ansichten erreichbar. Er sammelt persönliche Antworten, Mindmap-Gedanken, Kreativnotizen und den geführten Entwurf in einer gemeinsamen Auswahl. Mindestens zwei unterschiedliche Eingaben sind nötig. Eine eigene Verbindungsidee kann ergänzt werden.
+
+Thematische Regeln verbinden beispielsweise Fotografie mit Ortsgeschichte und Familienquellen, Klang mit Orten, Rezepte mit Überlieferungen, Umweltfragen mit digitalen Modellen oder Spiele mit sozialen Fragen. Ohne passende Regel entstehen ausdrücklich explorative Brückenvorschläge. Dies ist eine lokale regelbasierte Ideenwerkstatt, keine freie KI-Synthese, Recherche oder Bestätigung einer Forschungslücke.
+
+Vorschläge werden einzeln betrachtet: **Idee & Frage**, **Verbindung & Herkunft**, **Vorgehen & Grenzen**. Sie enthalten bearbeitbare Titel, Frage und Fokus sowie begründete Methoden-/Formatvorschläge und Rückfragen. Die Herkunft zeigt die tatsächlich verwendeten Eingaben im Wortlaut; ausgewählte, aber nicht verwendete Spuren werden nicht als verarbeitet ausgegeben.
+
+**Als Variante merken** speichert den neuen Entwurf neben dem aktuellen. **Übernehmen & weiterentwickeln** sichert den bisherigen Entwurf als Variante und aktiviert den neuen. Sind acht Variantenplätze belegt, wird die Übernahme gestoppt. Der neue Entwurf erhält eine vorläufige Materialplanung; der Themen-Test, die Hypothese und produktspezifische Ausarbeitungen werden zurückgesetzt, damit alte Antworten nicht als neue Ausarbeitung erscheinen. Ort, Zeit und bewusste Ausschlüsse bleiben erhalten und müssen gegen den Vorschlag geprüft werden. Quellen-/Feldzugang und Aufwand sind erneut zu prüfen.
+
+In der Mindmap verweisen Querbeziehungen von den verwendeten Spuren zum neuen Fokus. Herkunft und Verbindungsidee bleiben im Projekt und Konzeptexport erhalten. Die Ausgangsdaten werden bei der Erzeugung von Vorschlägen nicht verändert.
+
 ## Zwei ergänzende Denkmodi
 
 **Freier Denkraum (Startansicht):** eine interaktive Mindmap mit verschiebbaren Knoten, beliebig tiefen Ästen, Querbeziehungen, Zoom, Verschieben der Fläche, Einpassen und Rückgängig für strukturelle Änderungen. Gedanken lassen sich direkt bearbeiten, neu verbinden und als Fokus übernehmen. Persönliche Antworten, Fokus, Material und Forschungsfrage erscheinen in derselben Karte.

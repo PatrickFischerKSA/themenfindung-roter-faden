@@ -1,3 +1,4 @@
+import {createSynthesisUI} from './synthesis-ui.js';
 import {createStudio} from './studio.js';
 import {discoveryPaths,discoveryQuestion,personalSeeds} from './discovery.js';
 import {formats,chosenFormat,isCreative} from './formats.js';
@@ -93,6 +94,7 @@ let timer;function startTimer(){clearInterval(timer);let remaining=420;const dis
 studio=createStudio({getState:()=>state,save,changed:updateLive,replace:s=>{state=normalize(s);},toast,linear:(step,path)=>{go(step);const input=document.querySelector(`[data-path="${path}"]`);if(input){revealField(input);input.focus();}}});
 $('#project-json').onclick=()=>download('roter-faden-projekt.json',JSON.stringify(state,null,2),'application/json');$('#project-info').onclick=()=>{$('#project-dialog').close();$('#info').showModal();};$('#project-reset').onclick=()=>{$('#project-dialog').close();$('#reset').click();};
 $('#coach-dialog').addEventListener('close',()=>{if(state.view.mode==='map')studio.render();});
+const synthesisUI=createSynthesisUI({state:()=>state,save,methods,replace:s=>{state=normalize(s);studio?.clearHistory();},render,toast});$('#open-synthesis').onclick=()=>synthesisUI.open();
 $('#mode-map').onclick=()=>switchMode('map');$('#mode-linear').onclick=()=>switchMode('linear');
 $('#open-coach').onclick=()=>{coachCollapsed=false;renderCoach(evaluate(state));$('#coach-dialog').showModal();};$('#open-project').onclick=()=>$('#project-dialog').showModal();
 document.querySelectorAll('[data-close-dialog]').forEach(b=>b.onclick=()=>document.getElementById(b.dataset.closeDialog).close());

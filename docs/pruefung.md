@@ -34,3 +34,10 @@ Grenzen: Der erzeugte Konzepttext und die Importlogik sind automatisiert geprüf
 - Mobile Prüfung mit 390 × 844 px: Dokumenthöhe entspricht der Viewporthöhe, kein horizontaler Seitenüberlauf, genau ein geführter Arbeitsabschnitt sichtbar. Knotenauswahl auf kleinen Bildschirmen öffnet den gewählten Gedanken lesbar.
 
 Abschluss der Umstellung: 29 automatische Tests erfolgreich. Zusätzlich wurden der auf Abruf geöffnete Coach, die Ansicht auf 1440 × 960 px und die mobile Knotenauswahl geprüft. Der Browser meldete in der abgefragten Fehlerliste keine JavaScript-Fehler. Das automatische Layout hält Abstand zwischen Beschriftungen; absichtlich manuell platzierte Knoten bleiben an ihrer Position. Kreativnotizen, Gedanken und Querbeziehungen sind Teil des Konzeptexports.
+
+## Synthesefunktion
+
+- 35 automatische Tests erfolgreich, darunter sechs neue Tests für Mindestanzahl und Deduplizierung der Eingaben, thematische Verbindungen mit Herkunftsnachweis, Berücksichtigung der Auswahl, explizit explorative Alternativen, Rahmenbedingungen, unveränderten Ausgangsentwurf, Varianten sowie Export/Import der übernommenen Synthese.
+- Im Browser mit fiktiven Angaben «Fotografieren», «Familienalbum» und «Dorfgeschichte» drei Vorschläge erzeugt. Herkunftsansicht zeigt genau diese drei Eingaben. Titel bearbeitet und Vorschlag übernommen: drei Querbeziehungen in der Mindmap sichtbar, Forschungsfrage im geführten Modus übernommen, Ursprungsentwurf in der Variantenliste vorhanden.
+- Neuladen erhält die Daten. Zusätzlich «Als Variante merken» geprüft: aktuelles Ausgangsthema bleibt bestehen.
+- Mobile Ansicht mit 390 × 844 px geprüft: kein horizontaler Dokumentüberlauf; Vorschläge werden einzeln mit drei Inhaltsansichten dargestellt.
