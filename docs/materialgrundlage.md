@@ -35,3 +35,7 @@ Die sieben Bildschirm-Schritte bilden die **Themenfindung** ab, nicht alle 25 Sc
 ## Rechte und Daten
 
 Die Originale sind nicht Teil des GitHub-Pakets. Das Tool verwendet eigene Formulierungen, keine kopierten Abbildungen oder längeren Quellentexte. Nutzungsrechte der Materialien verbleiben bei den Rechteinhabern. Die Software lädt keine Dateien hoch. Projekt-JSON, Journale und exportierte Konzepte sind persönliche Arbeitsdateien.
+
+## Erweiterung: Feedback und Formate
+
+Der regelbasierte Werkstatt-Coach und die ausgearbeitete Planung von Podcast, Video, digitalen Anwendungen, Ausstellung/Audiowalk, Spiel/Simulation und künstlerischen Werken erweitern die Materialien auf Wunsch des Nutzers. Die Quelle liefert den Grundgedanken der kreativen Arbeit mit wissenschaftlichem Begleittext; die konkreten Formatprofile, Pilotideen, Rückfragen und Qualitätskriterien sind neu entwickelte didaktische Hilfen. Sie belegen keine Eignung oder Originalität eines konkreten Themas. Die schulische Zulässigkeit der Darstellungsform muss weiterhin mit der Betreuung geklärt werden.

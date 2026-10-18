@@ -16,12 +16,20 @@ python3 -m http.server 4173
 
 Danach http://localhost:4173 öffnen. Alternativ `npm start`. Die Dateien benötigen einen HTTP-Server, da ES-Module beim direkten Öffnen über `file://` eingeschränkt sind.
 
+## Neu: gezieltes Feedback und kreative Darstellungsformen
+
+Der **Werkstatt-Coach** reagiert auf den aktuellen Entwurf: Er benennt tragfähige Ansätze, stellt gezielte Rückfragen und gibt konkrete nächste Schritte zu Eingrenzung, Vergleich, Kausalität, Quellenzugang, Methoden, Zeit und Produktentwicklung. Antworten bleiben im Projekt erhalten und werden im Konzept exportiert. Das Feedback arbeitet mit nachvollziehbaren Regeln, ohne externe KI-Anbindung oder fachliche Faktenprüfung.
+
+Das **Formatlabor** bietet wissenschaftlichen Text, Podcast/Hörstück, Video/Dokumentarfilm, interaktive Website/App, Ausstellung/Audiowalk, Spiel/Simulation, künstlerisches Werk/Performance sowie eigene oder kombinierte Formen. Es unterscheidet zwischen der Vermittlung eigener Forschung und der Untersuchung einer Produktentwicklung. Publikum, Ziel, Formatbegründung, Umfang, zusätzlicher Produktionsaufwand, Pilot, Qualitätskriterien, Erprobung, Begleittext, Rechte und Zugänglichkeit sind bearbeitbar. Die Ideensammlung enthält themenbezogene kreative Impulse.
+
+Bisherige Projekte werden automatisch mit den neuen Feldern ergänzt. Gespeicherte Varianten enthalten auch Formatplanung und Coach-Antworten. Produktionsstunden zählen nur bei alternativen Darstellungsformen und zusätzlich zu Grund- und Methodenaufwand; dieselben Tätigkeiten sollten nicht doppelt geschätzt werden.
+
 ## Funktionen
 
 1. Ideen sammeln: Brainstorming, verzweigte Assoziationen, Mindmap und optionaler 7-Minuten-Timer.
 2. Thema eingrenzen: Aspekt, Zielgruppe, Ort, Zeit, Korpus, Perspektive und bewusste Ausschlüsse; live aktualisierte Themenpyramide.
 3. Fragestellung: sechs Erkenntnisinteressen, bearbeitbare Fragegerüste und vorläufige Hypothese.
-4. Methodenkarussell: 15 Zugänge, Mehrfachauswahl, Hinweise zu Auswertung und Grenzen, frei einstellbare Aufwände.
+4. Formatlabor und Methodenkarussell: 15 Zugänge, Mehrfachauswahl, Hinweise zu Auswertung und Grenzen, frei einstellbare Aufwände.
 5. Machbarkeit: Wochen, Stunden, Puffer, Umfang, Grundaufwand, Stichprobe, Budget, Ressourcen; sieben individuell gewichtete Bewertungskriterien; bis zu acht Varianten.
 6. Planung: vier verschiebbare Phasen nach dem Dossier, Abgabe, Verpflichtungen, Schulvorgaben, Betreuung, priorisierte Fragen, Feedback und Arbeitsjournal.
 7. Konzept: sechs Fragen des Themen-Tests, Titel, Gliederung, Markdown-Export und Druckansicht für PDF.
@@ -54,10 +62,12 @@ npm test
 - `style.css`: responsive Gestaltung und Druckansicht
 - `app.js`: Eingaben, Speicherung, Mindmap, Varianten, Exporte
 - `engine.js`: Methoden, Zustandsmodell, Berechnungen, Konzepttext
+- `formats.js`: Formate, produktbezogene Hinweise und Konzeptbaustein
+- `coaching.js`: regelbasierte Rückfragen, Feedback und kreative Themenimpulse
 - `tests/engine.test.js`: Berechnungs- und Importtests
 - `docs/materialgrundlage.md`: Zuordnung zu den Materialien und ergänzte Heuristiken
 
-Zeitberechnung: `Wochen × Stunden/Woche × (1 − Puffer/100)`. Aufwand: Grundaufwand plus individuell geschätzte Stunden jeder gewählten Methode. Die Phasengewichte teilen die nutzbare Zeit auf. Der Seitenumfang ist ein Planungsziel; er erzeugt keine automatische Aufwandsschätzung. Die Bewertung ist ein gewichteter Mittelwert der eigenen 0–5-Wertungen, umgerechnet auf 0–100. Bei ausschliesslich null gesetzten Gewichten wird kein Score angezeigt. Sie ist keine schulische Note und keine automatische Freigabe eines Themas.
+Zeitberechnung: `Wochen × Stunden/Woche × (1 − Puffer/100)`. Aufwand: Grundaufwand plus individuell geschätzte Stunden jeder gewählten Methode plus zusätzliche Medienproduktion bei alternativen Darstellungsformen. Die Phasengewichte teilen die nutzbare Zeit auf. Der Seitenumfang ist ein Planungsziel; er erzeugt keine automatische Aufwandsschätzung. Die Bewertung ist ein gewichteter Mittelwert der eigenen 0–5-Wertungen, umgerechnet auf 0–100. Bei ausschliesslich null gesetzten Gewichten wird kein Score angezeigt. Sie ist keine schulische Note und keine automatische Freigabe eines Themas.
 
 Keine externen Laufzeitabhängigkeiten. Lehrpersonen können Methoden und Hinweise in `engine.js` anpassen. Lokale Browserdaten sind benutzerbezogen; diese Version enthält keine Klassenverwaltung und kein gemeinsames Bearbeiten.
 
