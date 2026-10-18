@@ -1,20 +1,23 @@
 {
   "name": "themenfindung-roter-faden",
-  "version": "2.8.0",
+  "version": "2.9.0",
   "private": true,
   "type": "module",
-  "description": "Interaktive Werkstatt zur Themenfindung für Fach- und Maturaarbeiten",
+  "description": "Interaktive Werkstatt zur Themenfindung f\u00fcr Fach- und Maturaarbeiten",
   "scripts": {
     "start": "python3 -m http.server 4173",
     "test": "node --test",
-    "check": "node --check app.js && node --check engine.js && node --check formats.js && node --check coaching.js && node --check discovery.js && node --check thinking.js && node --check studio.js && node --check synthesis.js && node --check synthesis-ui.js && node --check disruption.js && node --check speech.js && node --check exports.js && node --check volcano.js && node --check document-import.js && node --check spurwechsel.js",
+    "check": "node --check app.js && node --check engine.js && node --check formats.js && node --check coaching.js && node --check discovery.js && node --check thinking.js && node --check studio.js && node --check synthesis.js && node --check synthesis-ui.js && node --check disruption.js && node --check speech.js && node --check exports.js && node --check volcano.js && node --check document-import.js && node --check spurwechsel.js && node --check image-import.js",
     "vendor": "node scripts/vendor.mjs"
   },
   "engines": {
     "node": ">=20"
   },
   "devDependencies": {
+    "@tesseract.js-data/deu": "1.0.0",
+    "@tesseract.js-data/eng": "1.0.0",
     "mammoth": "1.13.0",
-    "pdfjs-dist": "6.4.299"
+    "pdfjs-dist": "6.4.299",
+    "tesseract.js": "7.0.0"
   }
 }

@@ -6,3 +6,4 @@ await copyFile('node_modules/pdfjs-dist/LICENSE','vendor/pdfjs/LICENSE');
 for(const dir of ['cmaps','standard_fonts'])await cp('node_modules/pdfjs-dist/'+dir,'vendor/pdfjs/'+dir,{recursive:true});
 await copyFile('node_modules/mammoth/mammoth.browser.min.js','vendor/mammoth/mammoth.browser.min.js');
 await copyFile('node_modules/mammoth/LICENSE','vendor/mammoth/LICENSE');
+await import('./vendor-images.mjs');
