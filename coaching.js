@@ -1,3 +1,4 @@
+import {thinkingReport,thinkingExport} from './reasoning.js';
 import {discoveryQuestion,discoveryPaths} from './discovery.js';
 import {chosenFormat,isCreative} from './formats.js';
 // Transparente Regeln statt freier KI-Antworten. Jede Rückfrage hat eine stabile ID.
@@ -48,9 +49,9 @@ export function coach(s,e){
  const explored=discoveryPaths.filter(p=>s.discovery?.[p.id]?.trim());
  for(const p of explored){const d=discoveryQuestion(s,p.id);if(!s.discoveryDepth?.[p.id]?.trim())items.unshift({id:'personal-'+p.id,step:0,kind:'idee',title:p.name+': eine Spur vertiefen',feedback:`Du hast notiert: «${d.answer.slice(0,180)}${d.answer.length>180?' …':''}».`,question:d.follow,hint:p.methods,path:'discoveryDepth.'+p.id});}
  if(!explored.length&&s.step===0){const p=discoveryQuestion(s,s.discoveryFocus);items.unshift({id:'personal-start-'+p.id,step:0,kind:'frage',title:'Dein Leben darf der Ausgangspunkt sein',feedback:'Ein Thema muss nicht mit einem Schulfach beginnen. Träume, Freizeit und kleine Alltagsrätsel können eine Spur legen.',question:p.question,hint:'Wähle im Bereich «Persönliche Entdeckungsreise» eine Frage, die dich anspricht. Du kannst jede Frage überspringen.',path:'discovery.'+p.id});}
- return items;
+ const next=thinkingReport(s,e).next;return next?[{...next,kind:'frage',adaptive:true},...items]:items;
 }
-export function coachExport(s,e){const items=coach(s,e);const earlier=Object.entries(s.coachAnswers||{}).filter(([id,answer])=>answer.trim()&&!items.some(i=>i.id===id));return '## Werkstatt-Feedback und eigene Antworten\n'+items.map(i=>`### ${i.title}\n${i.feedback}\nRückfrage: ${i.question}\nHinweis: ${i.hint}\nMeine Antwort: ${s.coachAnswers?.[i.id]||'noch offen'}`).join('\n\n')+(earlier.length?'\n\n### Frühere Rückfragen und Antworten\n'+earlier.map(([id,answer])=>`${s.coachQuestions?.[id]||'Frühere Rückfrage'}\nMeine Antwort: ${answer}`).join('\n\n'):'')+'\n';}
+export function coachExport(s,e){const items=coach(s,e);const earlier=Object.entries(s.coachAnswers||{}).filter(([id,answer])=>answer.trim()&&!items.some(i=>i.id===id));return thinkingExport(s,e)+'## Werkstatt-Feedback und eigene Antworten\n'+items.map(i=>`### ${i.title}\n${i.feedback}\nRückfrage: ${i.question}\nHinweis: ${i.hint}\nMeine Antwort: ${s.coachAnswers?.[i.id]||'noch offen'}`).join('\n\n')+(earlier.length?'\n\n### Frühere Rückfragen und Antworten\n'+earlier.map(([id,answer])=>`${s.coachQuestions?.[id]||'Frühere Rückfrage'}\nMeine Antwort: ${answer}`).join('\n\n'):'')+'\n';}
 export function creativePrompts(s){const t=s.scope.aspect||s.topic||'ein Thema aus deinem Alltag';return [
  {format:'podcast',title:'Eine Frage, mehrere Stimmen',idea:`Ein Podcast zu «${t}»: zwei unterschiedliche Perspektiven mit eigener Quellenrecherche einordnen.`,question:`Welche unterschiedlichen Perspektiven auf «${t}» lassen sich dokumentieren und in einem Podcast nachvollziehbar gegenüberstellen?`},
  {format:'video',title:'Etwas Unsichtbares sichtbar machen',idea:`Ein kurzer Film zeigt «${t}» an einem konkreten Ort oder Fall.`,question:`Wie lässt sich «${t}» an einem ausgewählten Fall filmisch darstellen und mit festgelegten Kriterien reflektieren?`},
