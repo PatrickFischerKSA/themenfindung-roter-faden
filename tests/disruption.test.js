@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {freshState,normalize,concept} from '../engine.js';
+import {provocations,labPrompt,harvest} from '../disruption.js';
+import {graphNodes} from '../thinking.js';
+import {synthesisSources} from '../synthesis.js';
+test('Störlabor speichert Modus, Reizstärke und Notizen auch in älteren Projekten sicher',()=>{const s=freshState();s.view.mode='disrupt';s.view.labIndex=999;s.view.labLevel=-5;s.creativeNotes['lab-0']='Die Gegenposition ernst nehmen';const n=normalize(s);assert.equal(n.view.mode,'disrupt');assert.equal(n.view.labIndex,11);assert.equal(n.view.labLevel,0);assert.equal(n.creativeNotes['lab-0'],s.creativeNotes['lab-0']);assert.equal(normalize({version:1}).view.labStage,0);});
+test('Alle zwölf Störmanöver bieten drei Reizstärken und eine Rückführung',()=>{assert.equal(provocations.length,12);for(let i=0;i<12;i++){assert.equal(new Set([0,1,2].map(l=>labPrompt(i,l))).size,3);assert.ok(provocations[i][4].endsWith('?'));}});
+test('Brauchbarer Kern verbindet sich mit der ursprünglichen Spur, ohne Thema zu überschreiben',()=>{const s=freshState();s.topic='Familiengeschichten';s.discovery.family='Ein Brief';assert.equal(harvest(s,'Wer fehlt in diesen Geschichten?','discover:family','test'),'');assert.equal(s.topic,'Familiengeschichten');assert.equal(graphNodes(s).find(n=>n.id==='idea:test').parent,'discover:family');assert.ok(harvest(s,'Wer fehlt in diesen Geschichten?','root','double'));assert.equal(s.ideas.length,1);});
+test('Rohgedanken und gerettete Fragen gehen in Synthese und Konzept ein',()=>{const s=freshState();s.creativeNotes['lab-1']='Ich suche vielleicht nur Bestätigung';s.creativeNotes['harvest-1']='Was würde meine Vermutung widerlegen?';assert.ok(synthesisSources(s).some(x=>x.text.includes('Bestätigung')));const text=concept(normalize(s));assert.match(text,/Störlabor/);assert.match(text,/widerlegen/);});

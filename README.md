@@ -108,3 +108,6 @@ Keine externen Laufzeitabhängigkeiten. Lehrpersonen können Methoden und Hinwei
 ## Materialien und Rechte
 
 Original-PDF und Original-Präsentation sind nicht enthalten. Ihre Inhalte wurden als Arbeitsstruktur ausgewertet; fremde Zitate, Illustrationen und ausführliche Beispieltexte werden nicht weiterveröffentlicht. Die historische Erklärung über zwei getrennte Denkweisen der Hirnhälften wurde nicht als wissenschaftliche Grundlage übernommen. Fachliche und schulische Vorgaben sind mit der Betreuung zu klären. Rechte an den Ausgangsmaterialien bleiben bei den jeweiligen Rechteinhabern.
+
+### Störlabor: der dritte Denkweg
+Zwölf bewusst irritierende Störmanöver mit drei Reizstärken (Anstupsen, Querdenken, Konfrontieren) lösen festgefahrene Annahmen: Gegenanwalt, Ergebnis verboten, Zukunftsmuseum, Gegenstandsperspektive, Scheitern, Medienwechsel und mehr. Pro Karte folgt auf das wilde Gedankenexperiment eine Rückführung zu einer prüfbaren Frage. Alle Impulse sind überspringbar. Rohgedanken, verwendeter Reiz und brauchbare Kerne werden lokal und in JSON gesichert; die Synthese kann sie auswählen. «Als Gedanken mitnehmen» ergänzt die gemeinsame Sammlung am gewählten Ausgangsknoten, ohne das Thema zu ersetzen. Die Vorschläge sind kuratiert und lokal, ohne KI-Dienst.
