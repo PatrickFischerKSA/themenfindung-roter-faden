@@ -5,6 +5,7 @@ export function synthesisSources(s){const sources=[];const seen=new Set();const 
  add('topic','Ausgangsthema',s.topic,'project','root');add('aspect','Bisheriger Fokus',s.scope.aspect,'scope','scope:aspect');
  for(const p of discoveryPaths){add('personal-'+p.id,p.name,s.discovery[p.id],'personal','discover:'+p.id);add('depth-'+p.id,p.name+' · Vertiefung',s.discoveryDepth[p.id],'personal');}
  for(const [key,label] of [['debate','Aktuelle Debatte'],['open','Offene Forschungsfrage'],['why','Heutige Relevanz']])add('relevance-'+key,label,s.relevance?.[key],'relevance','relevance:'+key);
+ if(s.volcano?.resultTerm){add('volcano-term','Themenvulkan · Ausgangsbegriff',s.volcano.resultTerm,'project');add('volcano-answer','Themenvulkan · Eigener Schwerpunkt',s.volcano.resultAnswer,'project');}
  for(const idea of s.ideas)add('idea-'+idea.id,'Mindmap-Gedanke',idea.text,'idea','idea:'+idea.id);
  for(const [key,label] of [['corpus','Material'],['group','Zielgruppe'],['person','Personen'],['place','Ort'],['period','Zeitraum'],['perspective','Perspektive']])add('scope-'+key,label,s.scope[key],'scope',['corpus','group','place','period'].includes(key)?'scope:'+key:undefined);
  add('motivation','Persönliches Interesse',s.motivation,'project');add('question','Bisherige Forschungsfrage',s.question,'project','question');
@@ -55,4 +56,4 @@ export function synthesisVariant(s,p){const v=structuredClone(s);v.candidates=[]
  for(const source of p.sources){let node=source.nodeId;const stable=node?.startsWith('idea:')||node?.startsWith('discover:');if(!stable){if(v.ideas.length>=100)throw Error('Für die Herkunftsknoten fehlen freie Plätze. Entferne zuerst einige Gedanken.');const id=crypto.randomUUID();v.ideas.push({id,text:source.text.slice(0,1000),parent:''});node='idea:'+id;}if(!v.edges.some(e=>e.from===node&&e.to==='scope:aspect'))v.edges.push({from:node,to:'scope:aspect'});}
  return v;
 }
-export function synthesisExport(s){const p=s.synthesis?.accepted;if(!p)return '';return `## Übernommene Synthese\n${p.title}\nVerbindungsidee: ${p.reason}\nNoch zu klären: ${p.check}\n\nVerwendete Eingaben:\n${p.sources.map(x=>`- ${x.label}: ${x.text}`).join('\n')}\n\n`;}
+export function synthesisExport(s){const p=s.synthesis?.accepted;if(!p)return '';return `## ${p.id?.startsWith('volcano-')?'Übernommener Themenvulkan-Vorschlag':'Übernommene Synthese'}\n${p.title}\nVerbindungsidee: ${p.reason}\nNoch zu klären: ${p.check}\n\nVerwendete Eingaben:\n${p.sources.map(x=>`- ${x.label}: ${x.text}`).join('\n')}\n\n`;}
