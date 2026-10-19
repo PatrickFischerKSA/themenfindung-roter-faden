@@ -1,16 +1,16 @@
-import {importDefaults,normalizeParameterImports,parameterImportExport} from './parameter-import.js?v=3.6.0';
-import {dialogueDefaults,normalizeDialogue,dialogueExport} from './planning-dialogue.js?v=3.6.0';
-import {formalDefaults,normalizeFormal,formalExport} from './concept-check.js?v=3.6.0';
-import {normalizeShards,shardsExport} from './shards.js?v=3.6.0';
-import {planningDefaults,normalizePlanning,timeBudget,effortPlan,planningExport} from './feasibility.js?v=3.6.0';
-import {getApproach,inferApproach,disciplineDefaults,testQuestionsFor,approachExport,approachIssues} from './approaches.js?v=3.6.0';
-import {normalizeHandoff} from './spurwechsel.js?v=3.6.0';
-import {normalizeVolcano,volcanoExport} from './volcano.js?v=3.6.0';
-import {normalizeSynthesis,synthesisExport} from './synthesis.js?v=3.6.0';
-import {thinkingExport} from './thinking.js?v=3.6.0';
-import {discoveryPaths,discoveryExport} from './discovery.js?v=3.6.0';
-import {isCreative,creativeBrief,chosenFormat} from './formats.js?v=3.6.0';
-import {coachExport} from './coaching.js?v=3.6.0';
+import {importDefaults,normalizeParameterImports,parameterImportExport} from './parameter-import.js?v=3.6.1';
+import {dialogueDefaults,normalizeDialogue,dialogueExport} from './planning-dialogue.js?v=3.6.1';
+import {formalDefaults,normalizeFormal,formalExport} from './concept-check.js?v=3.6.1';
+import {normalizeShards,shardsExport} from './shards.js?v=3.6.1';
+import {planningDefaults,normalizePlanning,timeBudget,effortPlan,planningExport} from './feasibility.js?v=3.6.1';
+import {getApproach,inferApproach,disciplineDefaults,testQuestionsFor,approachExport,approachIssues} from './approaches.js?v=3.6.1';
+import {normalizeHandoff} from './spurwechsel.js?v=3.6.1';
+import {normalizeVolcano,volcanoExport} from './volcano.js?v=3.6.1';
+import {normalizeSynthesis,synthesisExport} from './synthesis.js?v=3.6.1';
+import {thinkingExport} from './thinking.js?v=3.6.1';
+import {discoveryPaths,discoveryExport} from './discovery.js?v=3.6.1';
+import {isCreative,creativeBrief,chosenFormat} from './formats.js?v=3.6.1';
+import {coachExport} from './coaching.js?v=3.6.1';
 export const methods = [
  ['literatur','Literaturrecherche', 'Forschungsstand und Begriffe klären; Quellen nach festgelegten Kriterien vergleichen.', 'Suchbegriffe, Datenbanken, Auswahlkriterien und Quellenkritik dokumentieren.',8,'sources'],
  ['interview','Interview','Kenntnisse, Perspektiven und Stellungnahmen gezielt erfragen.','Leitfaden, begründete Auswahl, Einwilligung, Transkription und Auswertung planen.',14,'people'],

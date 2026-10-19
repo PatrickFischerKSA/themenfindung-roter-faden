@@ -1,6 +1,6 @@
-import {preserveAsIdea} from './spurwechsel.js?v=3.6.0';
-import {graphNodes,layoutGraph,techniques,canReparent,connectIdeas,removeIdea} from './thinking.js?v=3.6.0';
-import {discoveryQuestion} from './discovery.js?v=3.6.0';
+import {preserveAsIdea} from './spurwechsel.js?v=3.6.1';
+import {graphNodes,layoutGraph,techniques,canReparent,connectIdeas,removeIdea} from './thinking.js?v=3.6.1';
+import {discoveryQuestion} from './discovery.js?v=3.6.1';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const colors=['#b45450','#648576','#b7924f','#7f81a1','#b77491','#5c8c9c','#879655','#ac7751'];
 export function createStudio(api){let inspector='node',drag=null,undo=[],resizeObserver;const state=()=>api.getState();const root=()=>document.querySelector('#free-workspace');const selected=()=>graphNodes(state()).find(n=>n.id===state().view.selected)||graphNodes(state())[0];const checkpoint=()=>{const s=state();undo.push({ideas:structuredClone(s.ideas),edges:structuredClone(s.edges),mapPositions:structuredClone(s.mapPositions),selected:s.view.selected});if(undo.length>20)undo.shift();};const save=()=>{api.save();api.changed();};

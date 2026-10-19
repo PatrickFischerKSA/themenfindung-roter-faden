@@ -1,7 +1,7 @@
-import {getApproach,approachIssues} from './approaches.js?v=3.6.0';
-import {thinkingReport,thinkingExport} from './reasoning.js?v=3.6.0';
-import {discoveryQuestion,discoveryPaths} from './discovery.js?v=3.6.0';
-import {chosenFormat,isCreative} from './formats.js?v=3.6.0';
+import {getApproach,approachIssues} from './approaches.js?v=3.6.1';
+import {thinkingReport,thinkingExport} from './reasoning.js?v=3.6.1';
+import {discoveryQuestion,discoveryPaths} from './discovery.js?v=3.6.1';
+import {chosenFormat,isCreative} from './formats.js?v=3.6.1';
 // Transparente Regeln statt freier KI-Antworten. Jede Rückfrage hat eine stabile ID.
 export function coach(s,e){
  const items=[];const add=(id,step,kind,title,feedback,question,hint,path)=>items.push({id,step,kind,title,feedback,question,hint,path});
