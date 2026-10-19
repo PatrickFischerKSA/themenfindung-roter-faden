@@ -1,5 +1,5 @@
-import {milestoneDetails,validDate} from './concept-check.js';
-import {timeBudget} from './feasibility.js';
+import {milestoneDetails,validDate} from './concept-check.js?v=3.5.1';
+import {timeBudget} from './feasibility.js?v=3.5.1';
 const esc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const clean=v=>typeof v==='string'?v.slice(0,3000):'';
 export const dialogueDefaults=()=>({deferrals:{}});

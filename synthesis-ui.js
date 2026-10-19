@@ -1,5 +1,5 @@
-import {synthesisSources,synthesize,synthesisVariant} from './synthesis.js';
-import {formats} from './formats.js';
+import {synthesisSources,synthesize,synthesisVariant} from './synthesis.js?v=3.5.1';
+import {formats} from './formats.js?v=3.5.1';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function createSynthesisUI(api){const dialog=document.getElementById('synthesis-dialog');let proposals=[],tab='idea',stage='sources';const s=()=>api.state();const selected=()=>s().synthesis.selected;const current=()=>proposals[s().synthesis.index]||proposals[0];
  function open(){const all=synthesisSources(s());if(!s().synthesis.selectionSet){s().synthesis.selected=all.map(x=>x.id);s().synthesis.selectionSet=true;}s().synthesis.selected=selected().filter(id=>all.some(x=>x.id===id));proposals=[];stage='sources';api.save();render();dialog.showModal();}

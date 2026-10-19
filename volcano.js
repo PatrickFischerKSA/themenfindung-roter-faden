@@ -1,7 +1,7 @@
-import {adaptProposal,getApproach} from './approaches.js';
-import {normalizeReviews,proposalReview,nextProposalIndex,proposalChecks} from './reasoning.js';
-import {normalizeDocument,createDocumentImport} from './document-import.js';
-import {synthesisVariant} from './synthesis.js';
+import {adaptProposal,getApproach} from './approaches.js?v=3.5.1';
+import {normalizeReviews,proposalReview,nextProposalIndex,proposalChecks} from './reasoning.js?v=3.5.1';
+import {normalizeDocument,createDocumentImport} from './document-import.js?v=3.5.1';
+import {synthesisVariant} from './synthesis.js?v=3.5.1';
 const profiles=[
  {id:'fans',test:/fankultur|fanszene|fanclub|ultra|supporter/i,hint:'ein Ritual, eine Fangruppe, einen Konflikt oder ein Gefühl von Zugehörigkeit',angles:['Heimtribünen im Vergleich','Rituale vor dem Anpfiff','Zugehörigkeit zwischen Generationen','Kommerz und Mitbestimmung','Stimmen aus der Kurve – ein Podcast'],questions:['Wie unterscheiden sich Fangesänge, Symbole oder Selbstdarstellungen zweier ausgewählter Vereine?','Welche Bedeutung geben Beteiligte einem einzelnen beobachtbaren Fanritual?','Welche Gemeinsamkeiten und Unterschiede zeigen die Erzählungen jüngerer und älterer Fans über Zugehörigkeit?','Wie begründen Fans und Vereinsvertretungen ihre Positionen zu einer konkret gewählten Frage von Kommerz oder Mitbestimmung?','Wie lässt sich eine begrenzte Frage zur Fankultur als Podcast mit unterschiedlichen Stimmen, Quellen und einer nachvollziehbaren Einordnung gestalten?']},
 

@@ -1,7 +1,7 @@
-import {timeBudget} from './feasibility.js';
-import {getApproach,approachIssues} from './approaches.js';
-import {synthesisSources} from './synthesis.js';
-import {chosenFormat,isCreative} from './formats.js';
+import {timeBudget} from './feasibility.js?v=3.5.1';
+import {getApproach,approachIssues} from './approaches.js?v=3.5.1';
+import {synthesisSources} from './synthesis.js?v=3.5.1';
+import {chosenFormat,isCreative} from './formats.js?v=3.5.1';
 const text=x=>String(x||'').trim();
 const short=x=>text(x).length>150?text(x).slice(0,147)+'…':text(x);
 const hash=value=>{let h=2166136261;for(const c of value)h=Math.imul(h^c.charCodeAt(0),16777619);return (h>>>0).toString(36);};

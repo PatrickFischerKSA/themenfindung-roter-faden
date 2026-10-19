@@ -1,6 +1,6 @@
-import {addShard} from './shards.js';
-import {graphNodes} from './thinking.js';
-import {normalizeVolcano,volcanoProposals} from './volcano.js';
+import {addShard} from './shards.js?v=3.5.1';
+import {graphNodes} from './thinking.js?v=3.5.1';
+import {normalizeVolcano,volcanoProposals} from './volcano.js?v=3.5.1';
 const modes=['map','linear','disrupt','volcano','shards'];
 export const modeNames={map:'Freier Denkraum',linear:'Geführter Weg',disrupt:'Rescue Programm',volcano:'Themenvulkan',shards:'Scherben bringen Glück'};
 const rescueKeys=['rescueNeed','rescueStarted','labIndex','labLevel','labStage','labSource'];

@@ -1,4 +1,4 @@
-import {feasibilityStatus,taskTemplates,calibrateTask,taskTotals} from './feasibility.js';
+import {feasibilityStatus,taskTemplates,calibrateTask,taskTotals} from './feasibility.js?v=3.5.1';
 const esc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const unitH=value=>Number(value).toLocaleString('de-CH',{maximumFractionDigits:3});
 const h=value=>Number.isFinite(value)?value.toLocaleString('de-CH',{maximumFractionDigits:1}):'nicht berechenbar';

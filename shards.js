@@ -1,6 +1,6 @@
-import {resetConceptFormal} from './concept-check.js';
-import {getApproach} from './approaches.js';
-import {taskTemplates} from './feasibility.js';
+import {resetConceptFormal} from './concept-check.js?v=3.5.1';
+import {getApproach} from './approaches.js?v=3.5.1';
+import {taskTemplates} from './feasibility.js?v=3.5.1';
 const text=(v,n=6000)=>typeof v==='string'?v.slice(0,n):'';
 export const shardRoles={idea:'Gedanke / Interesse',question:'Offene Frage',material:'Vorhandenes Material',counter:'Einwand / Widerspruch',format:'Gewünschte Form',constraint:'Rahmenbedingung'};
 export const conceptFields={title:'Arbeitstitel',summary:'Verbindung und Konzeptidee',question:'Leitfrage / Gestaltungsfrage',scope:'Eingrenzung',material:'Materialplan',procedure:'Vorgehen',outline:'Vorläufige Gliederung',output:'Ergebnis / Produkt',nextSteps:'Drei nächste Schritte',gaps:'Offene Punkte und Grenzen'};
