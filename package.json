@@ -7,7 +7,7 @@
   "scripts": {
     "start": "python3 -m http.server 4173",
     "test": "node --test",
-    "check": "node --check app.js && node --check engine.js && node --check formats.js && node --check coaching.js && node --check discovery.js && node --check thinking.js && node --check studio.js && node --check synthesis.js && node --check synthesis-ui.js && node --check disruption.js && node --check speech.js && node --check exports.js && node --check volcano.js && node --check document-import.js && node --check spurwechsel.js && node --check image-import.js && node --check reasoning.js && node --check approaches.js && node --check feasibility.js && node --check feasibility-ui.js && node --check shards.js && node --check shards-ui.js",
+    "check": "node --check app.js && node --check engine.js && node --check formats.js && node --check coaching.js && node --check discovery.js && node --check thinking.js && node --check studio.js && node --check synthesis.js && node --check synthesis-ui.js && node --check disruption.js && node --check speech.js && node --check exports.js && node --check volcano.js && node --check document-import.js && node --check spurwechsel.js && node --check image-import.js && node --check reasoning.js && node --check approaches.js && node --check feasibility.js && node --check feasibility-ui.js && node --check shards.js && node --check shards-ui.js && node --check background.js",
     "vendor": "node scripts/vendor.mjs"
   },
   "engines": {
