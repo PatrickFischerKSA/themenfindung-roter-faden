@@ -25,7 +25,7 @@ jobs:
       - name: Prepare public files
         run: |
           mkdir -p _site/docs
-          cp index.html style.css app.js engine.js formats.js coaching.js reasoning.js discovery.js thinking.js studio.js synthesis.js synthesis-ui.js disruption.js provocations.js speech.js exports.js volcano.js document-import.js image-import.js spurwechsel.js studio.css favicon.svg _site/
+          cp index.html style.css app.js engine.js formats.js coaching.js approaches.js reasoning.js discovery.js thinking.js studio.js synthesis.js synthesis-ui.js disruption.js provocations.js speech.js exports.js volcano.js document-import.js image-import.js spurwechsel.js studio.css favicon.svg _site/
           cp -R vendor _site/vendor
           cp docs/materialgrundlage.md _site/docs/
           touch _site/.nojekyll

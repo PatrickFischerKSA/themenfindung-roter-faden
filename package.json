@@ -1,13 +1,13 @@
 {
   "name": "themenfindung-roter-faden",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "private": true,
   "type": "module",
   "description": "Interaktive Werkstatt zur Themenfindung f\u00fcr Fach- und Maturaarbeiten",
   "scripts": {
     "start": "python3 -m http.server 4173",
     "test": "node --test",
-    "check": "node --check app.js && node --check engine.js && node --check formats.js && node --check coaching.js && node --check discovery.js && node --check thinking.js && node --check studio.js && node --check synthesis.js && node --check synthesis-ui.js && node --check disruption.js && node --check speech.js && node --check exports.js && node --check volcano.js && node --check document-import.js && node --check spurwechsel.js && node --check image-import.js && node --check reasoning.js",
+    "check": "node --check app.js && node --check engine.js && node --check formats.js && node --check coaching.js && node --check discovery.js && node --check thinking.js && node --check studio.js && node --check synthesis.js && node --check synthesis-ui.js && node --check disruption.js && node --check speech.js && node --check exports.js && node --check volcano.js && node --check document-import.js && node --check spurwechsel.js && node --check image-import.js && node --check reasoning.js && node --check approaches.js",
     "vendor": "node scripts/vendor.mjs"
   },
   "engines": {
