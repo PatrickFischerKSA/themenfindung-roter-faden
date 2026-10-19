@@ -4,6 +4,7 @@ import {discoveryPaths} from './discovery.js';
 const compact=text=>String(text||'').trim().replace(/\s+/g,' ');
 const short=text=>{const t=compact(text);return t.length>95?t.slice(0,92)+'…':t;};
 export function synthesisSources(s){const sources=[];const seen=new Set();const add=(id,label,text,kind,nodeId)=>{text=compact(text);if(text.length<3||seen.has(text.toLocaleLowerCase('de')))return;seen.add(text.toLocaleLowerCase('de'));sources.push({id,label,text,short:short(text),kind,nodeId});};
+ for(const f of s.shards?.fragments||[])if(f.selected)add('shard-'+f.id,'Scherbe · '+(f.title||f.role),f.text,'idea');
  add('topic','Ausgangsthema',s.topic,'project','root');add('aspect','Bisheriger Fokus',s.scope.aspect,'scope','scope:aspect');
  for(const p of discoveryPaths){add('personal-'+p.id,p.name,s.discovery[p.id],'personal','discover:'+p.id);add('depth-'+p.id,p.name+' · Vertiefung',s.discoveryDepth[p.id],'personal');}
  for(const [key,label] of [['debate','Aktuelle Debatte'],['open','Offene Forschungsfrage'],['why','Heutige Relevanz']])add('relevance-'+key,label,s.relevance?.[key],'relevance','relevance:'+key);
