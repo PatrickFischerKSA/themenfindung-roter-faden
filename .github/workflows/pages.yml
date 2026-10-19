@@ -25,7 +25,7 @@ jobs:
       - name: Prepare public files
         run: |
           mkdir -p _site/docs
-          cp concept-check.js background.js shards.js shards-ui.js index.html style.css app.js feasibility.js feasibility-ui.js engine.js formats.js coaching.js approaches.js reasoning.js discovery.js thinking.js studio.js synthesis.js synthesis-ui.js disruption.js provocations.js speech.js exports.js volcano.js document-import.js image-import.js spurwechsel.js studio.css favicon.svg _site/
+          cp planning-dialogue.js concept-check.js background.js shards.js shards-ui.js index.html style.css app.js feasibility.js feasibility-ui.js engine.js formats.js coaching.js approaches.js reasoning.js discovery.js thinking.js studio.js synthesis.js synthesis-ui.js disruption.js provocations.js speech.js exports.js volcano.js document-import.js image-import.js spurwechsel.js studio.css favicon.svg _site/
           cp -R media _site/media
           cp -R vendor _site/vendor
           cp docs/materialgrundlage.md _site/docs/
