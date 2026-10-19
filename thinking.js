@@ -1,5 +1,5 @@
-import {provocations} from './provocations.js?v=3.5.1';
-import {discoveryPaths} from './discovery.js?v=3.5.1';
+import {provocations} from './provocations.js?v=3.6.0';
+import {discoveryPaths} from './discovery.js?v=3.6.0';
 export const techniques=[
  {id:'cluster',name:'Freies Clustern',intro:'Folge einer Assoziation. Bewerte später.',prompts:['Was fällt dir dazu spontan ein?','Welches Bild, Gefühl oder Erlebnis verbindest du damit?','Welche unerwartete Nebenidee taucht auf?']},
  {id:'perspective',name:'Perspektivwechsel',intro:'Sieh deine Idee durch andere Augen.',prompts:['Was würde ein Kind dazu fragen?','Wie sieht eine betroffene Person das Thema?','Was würde jemand einwenden, der ganz anders denkt?','Welche Frage hätte eine Person aus einer anderen Zeit?']},
