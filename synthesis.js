@@ -1,7 +1,7 @@
-import {resetConceptFormal} from './concept-check.js?v=3.6.1';
-import {timeBudget} from './feasibility.js?v=3.6.1';
-import {adaptProposal,getApproach} from './approaches.js?v=3.6.1';
-import {discoveryPaths} from './discovery.js?v=3.6.1';
+import {resetConceptFormal} from './concept-check.js?v=3.7.0';
+import {timeBudget} from './feasibility.js?v=3.7.0';
+import {adaptProposal,getApproach} from './approaches.js?v=3.7.0';
+import {discoveryPaths} from './discovery.js?v=3.7.0';
 const compact=text=>String(text||'').trim().replace(/\s+/g,' ');
 const short=text=>{const t=compact(text);return t.length>95?t.slice(0,92)+'…':t;};
 export function synthesisSources(s){const sources=[];const seen=new Set();const add=(id,label,text,kind,nodeId)=>{text=compact(text);if(text.length<3||seen.has(text.toLocaleLowerCase('de')))return;seen.add(text.toLocaleLowerCase('de'));sources.push({id,label,text,short:short(text),kind,nodeId});};

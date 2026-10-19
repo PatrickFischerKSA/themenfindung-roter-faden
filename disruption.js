@@ -1,5 +1,5 @@
-import {graphNodes} from './thinking.js?v=3.6.1';
-import {provocations,rescueRoutes,rescueRoute,rescueNext} from './provocations.js?v=3.6.1';
+import {graphNodes} from './thinking.js?v=3.7.0';
+import {provocations,rescueRoutes,rescueRoute,rescueNext} from './provocations.js?v=3.7.0';
 export {provocations};
 export function labPrompt(index,level){const c=provocations[index]||provocations[0];return c[Math.min(2,Math.max(0,level))+1];}
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

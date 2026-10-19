@@ -1,7 +1,7 @@
-import {normalizeShards,addShard,modelShards,shardRoles,conceptFields,shardFingerprint,shardConceptExport,shardsExport,adoptShardConcept} from './shards.js?v=3.6.1';
-import {synthesisSources} from './synthesis.js?v=3.6.1';
-import {readDocument,MAX_FILE} from './document-import.js?v=3.6.1';
-import {isImageFile,loadImage,recognizeImage} from './image-import.js?v=3.6.1';
+import {normalizeShards,addShard,modelShards,shardRoles,conceptFields,shardFingerprint,shardConceptExport,shardsExport,adoptShardConcept} from './shards.js?v=3.7.0';
+import {synthesisSources} from './synthesis.js?v=3.7.0';
+import {readDocument,MAX_FILE} from './document-import.js?v=3.7.0';
+import {isImageFile,loadImage,recognizeImage} from './image-import.js?v=3.7.0';
 const esc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export async function readShardFile(file,progress,signal){if(file.size>MAX_FILE)throw Error('Maximal 20 MB je Datei.');if(/\.(txt|md)$/i.test(file.name)){const b=new Uint8Array(await file.arrayBuffer());const t=new TextDecoder(b[0]===255&&b[1]===254?'utf-16le':b[0]===254&&b[1]===255?'utf-16be':'utf-8').decode(b).replace(/^\uFEFF/,'').trim();if(!t)throw Error('Die Datei enthält keinen Text.');return {text:t.slice(0,6000),warning:t.length>6000?'Nur die ersten 6000 Zeichen übernommen; wähle wichtige Auszüge selbst.':''};}const r=await readDocument(file,progress,signal);return {...r,text:r.text.slice(0,6000),warning:r.text.length>6000?'Nur die ersten 6000 Zeichen übernommen; wichtige Auszüge selbst auswählen.':r.warning};}
 export function createShards(api){const root=document.querySelector('#shards-workspace'),urls=new Map();let busy=false,controller;const q=s=>root.querySelector(s),status=t=>{const e=q('#shard-status');if(e)e.textContent=t;},field=(label,key,value)=>`<label class="field"><span>${label}</span><textarea data-shard-field="${key}" maxlength="6000">${esc(value)}</textarea></label>`;

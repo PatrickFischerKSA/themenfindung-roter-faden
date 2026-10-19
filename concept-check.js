@@ -1,5 +1,5 @@
-import {getApproach,approaches} from './approaches.js?v=3.6.1';
-import {effortPlan} from './feasibility.js?v=3.6.1';
+import {getApproach,approaches} from './approaches.js?v=3.7.0';
+import {effortPlan} from './feasibility.js?v=3.7.0';
 export const formalGroups=[
  ['Projektangaben',[['author','Name / Autorenschaft'],['school','Schule, Klasse und Fach'],['supervisor','Betreuungsperson'],['version','Konzeptversion und Stand (Datum)']]],
  ['Verbindliche Formvorgaben',[['standardsSource','Quelle der Schulvorgaben: Dokument / Link, Version, Fundstelle und Prüfdatum'],['length','Geforderter Umfang: Konzept und spätere Arbeit getrennt, inklusive / exklusive Anhänge'],['requiredSections','Geforderte Bestandteile: Deckblatt, Kurzfassung, Verzeichnisse, Begleittext usw.'],['submission','Abgabeform: Dateiformat, Benennung, Kanal, Exemplare und Präsentation']]],
