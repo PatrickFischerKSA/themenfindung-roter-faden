@@ -1,3 +1,4 @@
+import {timeBudget} from './feasibility.js';
 import {getApproach,approachIssues} from './approaches.js';
 import {synthesisSources} from './synthesis.js';
 import {chosenFormat,isCreative} from './formats.js';
@@ -17,11 +18,12 @@ export function thinkingReport(s,e){
  const tensions=[];
  if(text(s.question)&&/\b(alle|alles|immer|überall|gesellschaft|menschheit)\b/i.test(s.question))tensions.push({id:'reach',feedback:`Die Reichweite von «${short(s.question)}» ist grösser als ein einzelner Fall belegen kann.`,question:'Für welchen konkreten Fall, welche Gruppe und welchen Zeitraum kannst du Aussagen tatsächlich prüfen?',path:'scope.aspect',step:1});
  if(a.id==='science'&&text(s.question)&&/einfluss|verursach|bewirk|wirkung/i.test(s.question)&&(s.methodIds.includes('interview')||s.methodIds.includes('umfrage')))tensions.push({id:'cause',feedback:'Du fragst nach Wirkung und planst Befragungen. Aussagen über Erfahrungen belegen allein keine Ursache.',question:'Welche Gegenhypothese und welche zusätzlichen Belege könnten deine Wirkungserklärung prüfen – oder grenzt du auf berichtete Erfahrungen ein?',path:'question',step:2});
- if(active&&text(s.question)&&e.needed>e.usable)tensions.push({id:'time',feedback:`Dein Plan benötigt ${e.needed} h; verfügbar sind ${e.usable.toFixed(1)} h.`,question:'Was ist die kleinste Untersuchung, die deine Leitfrage noch beantworten kann? Welche Methode oder Produktion kann entfallen?',path:'notes',step:3});
+ if(active&&text(s.question)&&e.timeComplete!==false&&e.needed>e.usable)tensions.push({id:'time',feedback:`Dein Plan benötigt ${e.needed} h; verfügbar sind ${e.usable.toFixed(1)} h.`,question:'Was ist die kleinste Untersuchung, die deine Leitfrage noch beantworten kann? Welche Methode oder Produktion kann entfallen?',path:'notes',step:3});
  if(active&&s.cost>s.budget)tensions.push({id:'budget',feedback:`Deine Kosten (${s.cost} CHF) überschreiten dein Budget (${s.budget} CHF).`,question:'Welche kleinere oder geliehene Umsetzung erreicht dasselbe Ziel?',path:'cost',step:4});
  const rules=[];const add=(key,phase,title,feedback,question,path,step,hint)=>rules.push({key,phase,title,feedback,question,path,step,hint:hint||'Notiere eine konkrete Entscheidung. Übernimm sie anschliessend in die passende Planung.'});
  const starts=personal.length?personal:sources.filter(x=>['volcano-term','volcano-answer'].includes(x.id));
  if(!active)add('start','open','Wähle einen Funken',starts.length?`Du hast ${starts.length} persönliche, kreative oder Vulkan-Spuren gesammelt.`:'Du musst noch kein fertiges Thema kennen.',starts.length?`Welche Spur möchtest du zuerst verfolgen: «${short(starts[0].text)}»${starts[1]?` oder «${short(starts[1].text)}»`:''}?`:'Welche Beobachtung, Leidenschaft oder offene Frage lässt dich gerade nicht los?','topic',0);
+ if(s.planning?.enabled&&e.timeComplete===false){const first=s.planning.tasks.findIndex(t=>!t.title?.trim()||!t.unit?.trim()||t.quantity<=0||t.hours<=0);if(first>=0)add('plan-gaps','test','Die Aufwandrechnung braucht konkrete Mengen und Zeiten','Der Detailplan enthält noch unvollständige Arbeitspakete. Null Stunden sind hier kein Nachweis geringer Arbeit.','Wie viele Einheiten umfasst dieses Paket, und wie lange brauchst du pro Einheit? Prüfe eine kleine Probe, bevor du hochrechnest.','planning.tasks.'+first+'.hours',4);}
  for(const t of tensions)add(t.id,'test','Eine Spannung zuerst klären',t.feedback,t.question,t.path,t.step);
  if(bridge.length===2&&!text(scope.aspect))add('bridge','connect','Zwei Spuren versuchsweise verbinden',`Spur A (${bridge[0].label}): «${short(bridge[0].text)}». Spur B (${bridge[1].label}): «${short(bridge[1].text)}».`,'Welcher konkrete Fall könnte beide Spuren verbinden? Oder passen sie für dich nicht zusammen – warum?', 'scope.aspect',1,'Eine Verbindungshypothese, kein erkannter Zusammenhang. In der Synthese kannst du andere Spuren auswählen.');
  if(active&&!text(s.motivation))add('interest','open','Deinen eigenen Antrieb klären',`Dein Ausgangspunkt ist «${short(active)}».`,'Welche eigene Erfahrung oder offene Frage macht diesen Gegenstand für dich wichtig?','motivation',0);
@@ -33,7 +35,7 @@ export function thinkingReport(s,e){
  if(active&&creative&&a.id!=='creative'&&!text(s.creative.testing))add('pilot','test','Das Format praktisch prüfen',`Du planst ${chosenFormat(s).name}.`,'Welchen kleinen Ausschnitt testest du mit wem, anhand welcher zwei Kriterien?','creative.testing',3);
  if(active)for(const item of approachIssues(s))add(item.id,'test',item.title,item.feedback,item.question,item.path,item.step,item.hint);
  if(active)add('decision','decide','Einen nächsten Versuch festlegen',`Dein bisheriger Entwurf umfasst ${evidence.length} dokumentierte Eckpunkte. Offene Punkte bleiben sichtbar.`,'Welchen kleinen Versuch führst du als Nächstes durch, bis wann, und welches Ergebnis würde dich zum Ändern oder Verwerfen bewegen?','checkpointQuestions',5);
- const context=JSON.stringify([s.approach,s.discipline,s.hypothesis,s.topic,scope,s.question,s.motivation,s.volcano?.resultTerm,s.volcano?.resultAnswer,bridge.map(x=>x.text),r,s.methodIds,s.resources,s.creative.format,s.creative.testing,e.needed,e.usable,s.cost,s.budget]);
+ const context=JSON.stringify([s.approach,s.discipline,s.hypothesis,s.topic,scope,s.question,s.motivation,s.volcano?.resultTerm,s.volcano?.resultAnswer,bridge.map(x=>x.text),r,s.methodIds,s.resources,s.creative.format,s.creative.testing,e.needed,e.usable,s.cost,s.budget,s.planning]);
  const candidates=rules.map(rule=>({...rule,id:'adaptive-'+rule.key+'-'+hash(context)}));
  const next=candidates.find(x=>!text(s.coachAnswers[x.id]))||candidates.at(-1);
  for(const source of sources){if(evidence.length>=5)break;if(!evidence.some(x=>x.text===short(source.text)))evidence.push({label:source.label,text:short(source.text)});}
@@ -48,5 +50,5 @@ export function proposalChecks(s,p){const same=[s.topic,s.scope.aspect].some(x=>
  ['Offene Frage','Suchfrage vorhanden; Forschungsstand und Gegenbelege noch prüfen.'],
  ['Material',same&&text(s.scope.corpus)?'Eigene Materialangabe: '+short(s.scope.corpus):'Bisher ein Materialvorschlag, kein bestätigter Zugang.'],
  ['Eigenleistung',p.intent==='entwickeln'?'Prototyp, Variantenvergleich und Erprobung dokumentieren.':'Eigene Auswahl, Kriterien und Auswertung festlegen.'],
- ['Aufwand',`${(s.weeks*s.hoursPerWeek*(1-s.buffer/100)).toFixed(1)} h sind im Projekt verfügbar. Dieser Vorschlag ist noch nicht einzeln kalkuliert.`],
+ ['Aufwand',`${timeBudget(s).usable.toFixed(1)} h sind im Projekt verfügbar. Dieser Vorschlag ist noch nicht einzeln kalkuliert.`],
  ['Aktuelle Bedeutung',same&&text(s.relevance.evidence)?'Eigene Quellenangabe: '+short(s.relevance.evidence):'Datierte Quellen und heutige Bedeutung selbst recherchieren.']];}
